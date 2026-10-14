@@ -5,6 +5,8 @@
 //         クライミング専門メディアの参考値から「身長＋ape index」で算出。
 //         信頼できる値が見つからない選手は null（画面では「不明」）。
 // 出典はそれぞれの行のコメントに記載。
+// null の選手は 2026-10 時点で日英独の報道・公式プロフィール・計測イベント資料を
+// 探しても数値が見つからなかったもの。
 // gender: "m" | "f"
 // video: YouTube 検索ワード（動画IDの直リンクはリンク切れしやすいので検索で開く）
 const CLIMBERS = [
@@ -140,9 +142,10 @@ const CLIMBERS = [
     video: "Mao Nakamura bouldering"
   },
   {
-    // 身長: Olympics.com / 腕の長さ: 資料により正負が食い違うため不明扱い
+    // 身長: Olympics.com / ape +2.5(+1インチ): Climber News, Climbing House, The Hangboard, DPM Climbing
+    //   ※ Wikipedia「Ape index」記事のみ負と記載（出典の La Sportiva の値は意味が曖昧）
     name: "ブルック・ラブトゥ", en: "Brooke Raboutou", country: "USA", gender: "f",
-    height: 157, span: null,
+    height: 157, span: 160,
     tags: ["指力", "外岩"],
     feature: "パリ2024ボルダー&リード銀。小柄ながら強靭な指と体幹で、細かいホールドの強傾斜を淡々と登る。",
     video: "Brooke Raboutou bouldering"
@@ -172,9 +175,9 @@ const CLIMBERS = [
     video: "Shauna Coxsey bouldering"
   },
   {
-    // 身長: Wikipedia / 腕の長さ: 情報なし
+    // 身長: Wikipedia, Climber News / 腕の長さ164(ape +10): The Hangboard, Climber News(+4インチ)
     name: "アシマ・シライシ", en: "Ashima Shiraishi", country: "USA", gender: "f",
-    height: 154, span: null,
+    height: 154, span: 164,
     tags: ["指力", "外岩"],
     feature: "10代で外岩V15を登った天才少女として有名に。細かいカチを持つ指力と、正確なフットワーク。",
     video: "Ashima Shiraishi bouldering"

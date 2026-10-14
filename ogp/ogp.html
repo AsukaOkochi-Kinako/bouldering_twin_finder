@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <meta name="robots" content="noindex">
+  <title>OGP画像のもと</title>
+  <!-- ogp.png を作るためのページ。Chrome のヘッドレスモードで 1200x630 をスクリーンショットする -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ogp.css">
+</head>
+<body>
+  <div class="card">
+    <div class="confetti" id="confetti"></div>
+
+    <div class="text">
+      <p class="kicker">BOULDERING&nbsp;&nbsp;TWIN&nbsp;&nbsp;FINDER</p>
+      <h1 class="title">
+        <span class="c-pink">わ</span><span class="c-yellow">た</span><span class="c-blue">し</span><span class="c-green">に</span><span class="c-orange">に</span><span class="c-red">て</span><span class="c-teal">る</span><br>
+        <span class="outline">クライマー</span><span class="c-yellow">は？</span>
+      </h1>
+      <p class="latin">Climb<em>Twin</em></p>
+      <p class="lead">身長を入れるだけで、そっくりな選手がわかる！</p>
+    </div>
+
+    <div class="stage">
+      <div class="blob"></div>
+      <div class="fig fig--1" id="f1"></div>
+      <div class="fig fig--2" id="f2"></div>
+      <div class="fig fig--3" id="f3"></div>
+      <div class="fig fig--4" id="f4"></div>
+    </div>
+  </div>
+
+  <script src="../figures.js"></script>
+  <script src="ogp.js"></script>
+</body>
+</html>

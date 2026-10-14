@@ -1,0 +1,118 @@
+:root {
+  --pink: #ff7eb6;
+  --yellow: #ffd83d;
+  --blue: #74a9e0;
+  --green: #2fa86b;
+  --teal: #1f9c95;
+  --orange: #ff8c1a;
+  --red: #f2492f;
+  --turquoise: #5ab6c6;
+  --ink: #2b2340;
+  --paper: #fffdf7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.c-pink { color: var(--pink); }
+.c-yellow { color: var(--yellow); }
+.c-blue { color: var(--blue); }
+.c-green { color: var(--green); }
+.c-orange { color: var(--orange); }
+.c-red { color: var(--red); }
+.c-teal { color: var(--teal); }
+
+.card {
+  position: relative;
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+  border: 14px solid var(--ink);
+}
+
+.confetti { position: absolute; inset: 0; }
+.confetti svg { width: 100%; height: 100%; display: block; }
+.hold-bit { opacity: .45; }
+
+.text {
+  position: absolute;
+  left: 60px;
+  top: 58px;
+  width: 640px;
+  z-index: 2;
+}
+.kicker {
+  margin: 0 0 14px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: .38em;
+  color: var(--ink);
+}
+.title {
+  margin: 0;
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  font-size: 74px;
+  line-height: 1.18;
+  text-shadow: 5px 5px 0 var(--ink);
+}
+.outline {
+  color: var(--paper);
+  -webkit-text-stroke: 2.5px var(--ink);
+  text-shadow: 6px 6px 0 var(--pink), 11px 11px 0 var(--blue);
+}
+.latin {
+  margin: 10px 0 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: 104px;
+  line-height: .95;
+  letter-spacing: -.04em;
+  color: var(--ink);
+}
+.latin em { font-style: normal; color: var(--red); margin-left: .08em; }
+.lead {
+  display: inline-block;
+  margin: 22px 0 0;
+  padding: 8px 20px;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--yellow);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.stage {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 560px;
+  height: 630px;
+}
+.blob {
+  position: absolute;
+  left: 70px;
+  top: 90px;
+  width: 470px;
+  height: 470px;
+  border-radius: 46% 54% 50% 50% / 52% 44% 56% 48%;
+  background: var(--turquoise);
+  border: 4px solid var(--ink);
+}
+.fig { position: absolute; }
+.fig svg { width: 100%; height: 100%; display: block; }
+.fig--1 { left: 140px; top: 60px;  width: 300px; height: 343px; rotate: -6deg; }
+.fig--2 { left: 40px;  top: 330px; width: 210px; height: 240px; rotate: 10deg; }
+.fig--3 { left: 300px; top: 340px; width: 220px; height: 251px; rotate: -8deg; }
+.fig--4 { left: 380px; top: 40px;  width: 150px; height: 171px; rotate: 14deg; }

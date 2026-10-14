@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>わたしのクライマー</title>
   <meta name="description" content="身長・腕の長さ・性別から、体格の似ているボルダリング選手を探すサイト">
+  <link rel="canonical" href="https://asukaokochi-kinako.github.io/bouldering_twin_finder/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Climb Twin">
+  <meta property="og:title" content="わたしににてるクライマーは？ | Climb Twin">
+  <meta property="og:description" content="身長を入れるだけで、体格がそっくりなボルダリング選手がわかる！腕の長さを入れるともっと正確に。入力した数値は保存されません。">
+  <meta property="og:url" content="https://asukaokochi-kinako.github.io/bouldering_twin_finder/">
+  <meta property="og:image" content="https://asukaokochi-kinako.github.io/bouldering_twin_finder/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="カラフルな服のクライマーたちと「わたしににてるクライマーは？ Climb Twin」の文字">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="わたしににてるクライマーは？ | Climb Twin">
+  <meta name="twitter:description" content="身長を入れるだけで、体格がそっくりなボルダリング選手がわかる！">
+  <meta name="twitter:image" content="https://asukaokochi-kinako.github.io/bouldering_twin_finder/ogp.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet">
@@ -81,6 +99,20 @@
       <h2 class="results__title">あなたに似てるのは…</h2>
       <div class="you" id="you"></div>
       <ol class="cards" id="cards"></ol>
+
+      <div class="share">
+        <p class="share__title">結果をシェアしよう！</p>
+        <p class="share__preview" id="share-text"></p>
+        <p class="share__note">※ 身長や腕の長さはシェアされません</p>
+        <div class="share__btns">
+          <a class="sbtn sbtn--x" id="share-x" target="_blank" rel="noopener noreferrer">X でポスト</a>
+          <a class="sbtn sbtn--line" id="share-line" target="_blank" rel="noopener noreferrer">LINE で送る</a>
+          <a class="sbtn sbtn--threads" id="share-threads" target="_blank" rel="noopener noreferrer">Threads</a>
+          <a class="sbtn sbtn--fb" id="share-fb" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <button class="sbtn sbtn--copy" type="button" id="share-copy">文章をコピー</button>
+          <button class="sbtn sbtn--more" type="button" id="share-native" hidden>その他のアプリ</button>
+        </div>
+      </div>
       <button class="btn btn--ghost" type="button" id="retry"><span class="btn__face">もう一回</span></button>
     </div>
   </section>
@@ -93,6 +125,7 @@
   </footer>
 
   <script src="data.js"></script>
+  <script src="figures.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
