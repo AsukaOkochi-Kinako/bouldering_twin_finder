@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わたしのクライマー</title>
+  <meta name="description" content="身長・腕の長さ・性別から、体格の似ているボルダリング選手を探すサイト">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 背景の紙吹雪 -->
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero__side hero__side--l" id="side-l" aria-hidden="true"></div>
+    <div class="hero__side hero__side--r" id="side-r" aria-hidden="true"></div>
+
+    <p class="hero__kicker">BOULDERING&nbsp;&nbsp;TWIN&nbsp;&nbsp;FINDER</p>
+    <h1 class="hero__title">
+      <span class="c-pink">わ</span><span class="c-yellow">た</span><span class="c-blue">し</span><span class="c-green">に</span><br>
+      <span class="c-orange">に</span><span class="c-red">て</span><span class="c-teal">る</span><br>
+      <span class="hero__title-big">クライマー</span><span class="c-yellow">は？</span>
+    </h1>
+    <p class="hero__latin">Climb<em>Twin</em></p>
+    <p class="hero__lead">身長を入れるだけ。腕の長さもわかれば、もっとそっくりに。<br>体格が似ているボルダリング選手を見つけよう。</p>
+    <div class="hero__parade" id="parade" aria-hidden="true"></div>
+  </header>
+
+  <main class="main">
+    <section class="panel" aria-labelledby="form-title">
+      <h2 class="panel__title" id="form-title"><span>1</span>からだのサイズを教えて</h2>
+
+      <form class="form" id="form" autocomplete="off" novalidate>
+        <fieldset class="field">
+          <legend class="field__label">性別</legend>
+          <div class="chips">
+            <label class="chip chip--pink"><input type="radio" name="gender" value="f"><span>女性</span></label>
+            <label class="chip chip--blue"><input type="radio" name="gender" value="m"><span>男性</span></label>
+            <label class="chip chip--green"><input type="radio" name="gender" value="any" checked><span>どちらも</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="field__label" for="height">身長</label>
+          <div class="num">
+            <input type="number" id="height" name="height" inputmode="decimal" min="120" max="220" step="0.1" placeholder="160" required>
+            <span class="num__unit">cm</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="span">腕の長さ <span class="field__opt">任意</span></label>
+          <div class="num">
+            <input type="number" id="span" name="span" inputmode="decimal" min="110" max="240" step="0.1" placeholder="空欄でもOK">
+            <span class="num__unit">cm</span>
+          </div>
+          <p class="field__hint">両腕を真横にまっすぐ広げたときの、指先から指先までの長さ。わからなければ空欄のままで大丈夫。</p>
+        </div>
+
+        <p class="form__error" id="error" role="alert"></p>
+
+        <button class="btn" type="submit">
+          <span class="btn__face">さがす！</span>
+        </button>
+
+        <p class="privacy">
+          <span class="privacy__dot"></span>
+          入力した数値はこのブラウザの中だけで計算します。サーバーへの送信・保存は一切しません。
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <section class="results" id="results" aria-live="polite" hidden>
+    <div class="results__deco" id="band-deco" aria-hidden="true"></div>
+    <div class="results__inner">
+      <p class="results__kicker">YOUR&nbsp;&nbsp;CLIMBING&nbsp;&nbsp;TWINS</p>
+      <h2 class="results__title">あなたに似てるのは…</h2>
+      <div class="you" id="you"></div>
+      <ol class="cards" id="cards"></ol>
+      <button class="btn btn--ghost" type="button" id="retry"><span class="btn__face">もう一回</span></button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="swatch" aria-hidden="true">
+      <i class="sw-pink"></i><i class="sw-yellow"></i><i class="sw-blue"></i><i class="sw-green"></i><i class="sw-orange"></i><i class="sw-red"></i>
+    </div>
+    <p>選手の身長は日本山岳・スポーツクライミング協会、IFSC、五輪公式などの公表値です。<br>腕の長さは公式な計測値がほとんど公開されていないため、Wikipedia や専門メディアの参考値を使い、見つからない選手は「不明」としています。</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
