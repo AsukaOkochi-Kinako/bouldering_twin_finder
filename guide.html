@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ボルダリングの楽しみ方 | Climb Twin</title>
+  <meta name="description" content="はじめてのボルダリングガイド。「ガンバ！」などの声かけ、よく聞く用語、グレードの見方、ジムでのマナーまで。">
+  <link rel="canonical" href="https://asukaokochi-kinako.github.io/bouldering_twin_finder/guide.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Climb Twin">
+  <meta property="og:title" content="ボルダリングの楽しみ方 | Climb Twin">
+  <meta property="og:description" content="「ガンバ！」の声かけから、グレードの見方、ジムでのマナーまで。はじめてのボルダリングガイド。">
+  <meta property="og:url" content="https://asukaokochi-kinako.github.io/bouldering_twin_finder/guide.html">
+  <meta property="og:image" content="https://asukaokochi-kinako.github.io/bouldering_twin_finder/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="guide.css">
+</head>
+<body>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <nav class="topnav">
+    <a class="topnav__back" href="./">← そっくりクライマーをさがす</a>
+  </nav>
+
+  <header class="ghero">
+    <p class="hero__kicker">BEGINNER'S&nbsp;&nbsp;GUIDE</p>
+    <h1 class="ghero__title">ボルダリングの<br><span class="c-red">楽しみ方</span></h1>
+    <p class="ghero__lead">はじめてでも、見るだけでも楽しい！<br>ジムで聞こえる声かけや、グレードの見方をまとめました。</p>
+    <div class="ghero__figs" id="hero-figs" aria-hidden="true"></div>
+
+    <ul class="toc">
+      <li><a class="toc__chip toc__chip--pink" href="#what">ボルダリングって？</a></li>
+      <li><a class="toc__chip toc__chip--yellow" href="#ganba">声かけ「ガンバ！」</a></li>
+      <li><a class="toc__chip toc__chip--blue" href="#words">よく聞く用語</a></li>
+      <li><a class="toc__chip toc__chip--green" href="#grade">グレードの見方</a></li>
+      <li><a class="toc__chip toc__chip--orange" href="#manner">はじめてのジム</a></li>
+      <li><a class="toc__chip toc__chip--teal" href="#watch">大会を観よう</a></li>
+    </ul>
+  </header>
+
+  <main class="gmain">
+
+    <!-- 1. ボルダリングって？ -->
+    <section class="gsec" id="what">
+      <p class="gsec__num">01</p>
+      <h2 class="gsec__title">ボルダリングって？</h2>
+      <p class="gsec__lead">ロープを使わずに、高さ4〜5mくらいの壁を登るスポーツ。下には分厚いマットが敷いてあります。</p>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__icon step__icon--pink">1</span>
+          <h3>課題をえらぶ</h3>
+          <p>同じ色・同じテープが付いたホールド（突起）だけを使って登るのがルール。このコースを<b>「課題」</b>と呼びます。</p>
+        </li>
+        <li class="step">
+          <span class="step__icon step__icon--yellow">2</span>
+          <h3>スタート</h3>
+          <p>「S」などの印があるスタートホールドを持って、お尻をマットから離したらスタート。</p>
+        </li>
+        <li class="step">
+          <span class="step__icon step__icon--blue">3</span>
+          <h3>ゴール！</h3>
+          <p>「G」の印があるゴールホールドを<b>両手で持って</b>、ピタッと止まれたら<b>「完登」</b>！</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 2. 声かけ -->
+    <section class="gsec gsec--band" id="ganba">
+      <div class="gsec__inner">
+        <p class="gsec__num">02</p>
+        <h2 class="gsec__title">応援するときは「ガンバ！」</h2>
+        <p class="gsec__lead">ジムでは、知らない人同士でも声をかけ合うのが楽しいところ。登っている人を見かけたら、気軽に声をかけてみよう。</p>
+
+        <div class="cheer">
+          <div class="cheer__stage" id="cheer-stage" aria-hidden="true"></div>
+          <div class="cheer__ctrl">
+            <button class="btn" type="button" id="cheer-btn"><span class="btn__face">ガンバ！</span></button>
+            <p class="cheer__count" aria-live="polite"><span id="cheer-count">0</span> ガンバ</p>
+          </div>
+        </div>
+
+        <ul class="bubbles">
+          <li class="bubble bubble--yellow">
+            <p class="bubble__word">ガンバ！</p>
+            <p class="bubble__desc">「頑張れ！」の意味。いちばんよく使う応援の言葉。核心（いちばん難しいところ）に差しかかったときに特に聞こえます。</p>
+          </li>
+          <li class="bubble bubble--pink">
+            <p class="bubble__word">ナイス！</p>
+            <p class="bubble__desc">いい動きができたとき、完登したときに。拍手と一緒にどうぞ。</p>
+          </li>
+          <li class="bubble bubble--blue">
+            <p class="bubble__word">いけるいける！</p>
+            <p class="bubble__desc">あと少しでゴールに届きそうなときの後押し。</p>
+          </li>
+          <li class="bubble bubble--green">
+            <p class="bubble__word">おつかれ〜！</p>
+            <p class="bubble__desc">落ちちゃっても大丈夫。降りてきた人にひと声かけると、自然と仲良くなれます。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 用語 -->
+    <section class="gsec" id="words">
+      <p class="gsec__num">03</p>
+      <h2 class="gsec__title">よく聞く用語</h2>
+      <p class="gsec__lead">ジムや大会の実況で飛び交う言葉。知っていると観るのも登るのも楽しくなります。</p>
+
+      <h3 class="gsub">登り方のことば</h3>
+      <dl class="words">
+        <div class="word"><dt>オブザベ</dt><dd>登る前に下から課題をよく観察して、どう登るか考えること。</dd></div>
+        <div class="word"><dt>完登</dt><dd>スタートからゴールまで落ちずに登りきること。</dd></div>
+        <div class="word"><dt>一撃</dt><dd>はじめて挑戦したその1回目で完登すること。いちばん嬉しいやつ。</dd></div>
+        <div class="word"><dt>核心</dt><dd>その課題でいちばん難しいところ。</dd></div>
+        <div class="word"><dt>ムーブ</dt><dd>ホールドからホールドへ移る一つひとつの動き。</dd></div>
+        <div class="word"><dt>セッション</dt><dd>みんなで同じ課題に交代で挑戦すること。アドバイスし合えて楽しい。</dd></div>
+      </dl>
+
+      <h3 class="gsub">ホールドのことば</h3>
+      <dl class="words">
+        <div class="word word--pink"><dt>ガバ</dt><dd>指がしっかり掛かる、持ちやすい大きなホールド。</dd></div>
+        <div class="word word--pink"><dt>カチ</dt><dd>指先しか掛からない、薄くて小さいホールド。</dd></div>
+        <div class="word word--pink"><dt>スローパー</dt><dd>丸くてツルッとしたホールド。手のひら全体で押さえるように持つ。</dd></div>
+        <div class="word word--pink"><dt>ピンチ</dt><dd>親指とほかの指でつまむように持つホールド。</dd></div>
+      </dl>
+
+      <h3 class="gsub">壁のことば</h3>
+      <dl class="words">
+        <div class="word word--green"><dt>スラブ</dt><dd>垂直よりゆるく、手前に寝ている壁。足の置き方とバランスが勝負で、はじめての人にもおすすめ。</dd></div>
+        <div class="word word--green"><dt>垂壁</dt><dd>「すいへき」。ほぼ垂直に立った壁。手と足をバランスよく使う基本の壁。</dd></div>
+        <div class="word word--green"><dt>カブリ</dt><dd>手前にせり出している前傾壁。腕の力と体幹が必要。少しだけ傾いたものは「薄カブリ」。</dd></div>
+        <div class="word word--green"><dt>ルーフ</dt><dd>天井のようにほぼ水平になった壁。ぶら下がりながら進む、迫力のあるエリア。</dd></div>
+        <div class="word word--green"><dt>ハリボテ</dt><dd>壁に取り付けた大きな立体パーツ。そのものを持ったり、足を乗せたりして使う。</dd></div>
+        <div class="word word--green"><dt>コーナー</dt><dd>2枚の壁が角になった場所。両側の壁を押し合うようにして登れる。</dd></div>
+      </dl>
+
+      <h3 class="gsub">技のことば</h3>
+      <dl class="words">
+        <div class="word word--blue"><dt>ランジ</dt><dd>遠くのホールドに向かってジャンプして飛びつく、ダイナミックな技。</dd></div>
+        <div class="word word--blue"><dt>ヒールフック</dt><dd>かかとをホールドに引っかけて、足で体を引き寄せる技。</dd></div>
+        <div class="word word--blue"><dt>トウフック</dt><dd>つま先の甲側をホールドに引っかける技。</dd></div>
+        <div class="word word--blue"><dt>キョン</dt><dd>ひざを内側にひねって壁に体を寄せる技。正式には「ドロップニー」。</dd></div>
+        <div class="word word--blue"><dt>マントル</dt><dd>ホールドや壁の上に手をついて、体を押し上げる技。</dd></div>
+        <div class="word word--blue"><dt>コーディネーション</dt><dd>走ったり跳んだり、全身をタイミングよく連動させる大会でおなじみの動き。</dd></div>
+      </dl>
+    </section>
+
+    <!-- 4. グレード -->
+    <section class="gsec" id="grade">
+      <p class="gsec__num">04</p>
+      <h2 class="gsec__title">グレードの見方</h2>
+      <p class="gsec__lead">課題の難しさは「グレード」で表します。日本のジムでは<b>「級」と「段」</b>が一般的。</p>
+
+      <div class="grade-rule">
+        <div class="grade-rule__item">
+          <p class="grade-rule__head">級</p>
+          <p>数字が<b>小さいほど</b>難しい。<br>10級 → 1級</p>
+        </div>
+        <div class="grade-rule__arrow" aria-hidden="true">→</div>
+        <div class="grade-rule__item grade-rule__item--hard">
+          <p class="grade-rule__head">段</p>
+          <p>1級の次が初段。数字が<b>大きいほど</b>難しい。<br>初段 → 二段 → 三段…</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="gtable">
+          <caption>グレード対応表（めやす）</caption>
+          <thead>
+            <tr><th scope="col">日本</th><th scope="col">アメリカ<br><small>Vグレード</small></th><th scope="col">ヨーロッパ<br><small>フォンテーヌ</small></th><th scope="col">ひとこと</th></tr>
+          </thead>
+          <tbody>
+            <tr class="lv1"><th scope="row">10〜7級</th><td>VB</td><td>3〜4</td><td>はじめての日はここから</td></tr>
+            <tr class="lv1"><th scope="row">6級</th><td>V0−</td><td>4+</td><td>何回か通うと登れるように</td></tr>
+            <tr class="lv2"><th scope="row">5級</th><td>V0</td><td>5</td><td>コツをつかんだらここ</td></tr>
+            <tr class="lv2"><th scope="row">4級</th><td>V1〜V2</td><td>5+</td><td>ジム通いが習慣になってきた</td></tr>
+            <tr class="lv3"><th scope="row">3級</th><td>V3</td><td>6A〜6A+</td><td>「中級者」の入り口</td></tr>
+            <tr class="lv3"><th scope="row">2級</th><td>V4</td><td>6B〜6B+</td><td>技を使い分けられるように</td></tr>
+            <tr class="lv4"><th scope="row">1級</th><td>V5</td><td>6C〜6C+</td><td>多くの人が目標にする壁</td></tr>
+            <tr class="lv4"><th scope="row">初段</th><td>V6</td><td>7A</td><td>「段持ち」の仲間入り</td></tr>
+            <tr class="lv5"><th scope="row">二段〜三段</th><td>V7〜V10</td><td>7A+〜7C+</td><td>かなりの上級者</td></tr>
+            <tr class="lv5"><th scope="row">四段〜六段</th><td>V11〜V15</td><td>8A〜8C</td><td>トップクライマーの世界</td></tr>
+            <tr class="lv6"><th scope="row">—</th><td>V16〜V17</td><td>8C+〜9A</td><td>世界でも一握りしか登れない最難関</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gnote">※ 対応はおおよそのめやすです。同じ「3級」でもジムによって難しさ（辛い・甘い）が違うのもボルダリングあるある。グレードをテープの色で表しているジムも多いので、受付で確認してみよう。</p>
+    </section>
+
+    <!-- 5. はじめてのジム -->
+    <section class="gsec gsec--band gsec--yellow" id="manner">
+      <div class="gsec__inner">
+        <p class="gsec__num">05</p>
+        <h2 class="gsec__title">はじめてのジムで</h2>
+        <p class="gsec__lead">ちょっとしたルールを知っておけば、はじめてでも安心。</p>
+
+        <div class="cols">
+          <div class="col">
+            <h3 class="col__title">もちもの</h3>
+            <ul class="checks">
+              <li>動きやすい服（伸びるパンツがおすすめ）</li>
+              <li>シューズ・チョークはレンタルできるジムがほとんど</li>
+              <li>爪は短く、アクセサリーは外しておく</li>
+              <li>水分補給用の飲みもの</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 class="col__title">マナー</h3>
+            <ul class="checks checks--pink">
+              <li>はじめての日は、受付で講習（説明）を受けよう</li>
+              <li>登っている人の下や、着地しそうな場所にいない</li>
+              <li>ほかの人の課題とルートが交差しないか確認。同時にスタートしそうなら譲り合い</li>
+              <li>降りるときは、低い位置まで下りてから。着地は両足で、ひざを曲げてやわらかく</li>
+              <li>同じ課題に並んでいる人がいたら、交代で</li>
+            </ul>
+          </div>
+        </div>
+        <p class="gtip">💡 指や腕はすぐ疲れるので、1本登ったらしっかり休憩するのが長く楽しむコツ。</p>
+      </div>
+    </section>
+
+    <!-- 6. 観戦 -->
+    <section class="gsec" id="watch">
+      <p class="gsec__num">06</p>
+      <h2 class="gsec__title">大会を観よう</h2>
+      <p class="gsec__lead">オリンピックやワールドカップのボルダーは、制限時間内にいくつの課題を登れるかの勝負。</p>
+
+      <ul class="points">
+        <li class="point point--red">
+          <p class="point__big">TOP</p>
+          <p>ゴールのホールドを両手で持てたら「トップ」。いちばん高い得点。</p>
+        </li>
+        <li class="point point--blue">
+          <p class="point__big">ZONE</p>
+          <p>課題の途中にある「ゾーン」ホールドを持てたら部分点。</p>
+        </li>
+        <li class="point point--green">
+          <p class="point__big">TRY</p>
+          <p>少ない回数で登るほど高評価。落ちるたびに少しずつ減点されます。</p>
+        </li>
+      </ul>
+      <p class="gtip">💡 選手が登る前に壁の前で手を動かしているのは「オブザベ」中。どう登るつもりか予想しながら観ると面白さ倍増！</p>
+
+      <div class="gcta">
+        <p>自分に体格が似ている選手を見つけて、応援してみよう！</p>
+        <a class="btn btn--link" href="./"><span class="btn__face">そっくりクライマーをさがす</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="swatch" aria-hidden="true">
+      <i class="sw-pink"></i><i class="sw-yellow"></i><i class="sw-blue"></i><i class="sw-green"></i><i class="sw-orange"></i><i class="sw-red"></i>
+    </div>
+    <p>グレードの対応はめやすです。ルールや表記はジム・大会によって異なります。</p>
+  </footer>
+
+  <script src="figures.js"></script>
+  <script src="guide.js"></script>
+</body>
+</html>
