@@ -116,3 +116,39 @@ html, body {
 .fig--2 { left: 40px;  top: 330px; width: 210px; height: 240px; rotate: 10deg; }
 .fig--3 { left: 300px; top: 340px; width: 220px; height: 251px; rotate: -8deg; }
 .fig--4 { left: 380px; top: 40px;  width: 150px; height: 171px; rotate: 14deg; }
+
+/* ========== ガイドページ用 ========== */
+.card--guide .blob { background: var(--yellow); }
+.title--guide { font-size: 80px; line-height: 1.15; color: var(--ink); text-shadow: none; }
+.title--guide span:not(.outline) { text-shadow: 5px 5px 0 var(--ink); }
+.title--guide .outline { font-size: 96px; }
+.card--guide .lead { background: var(--pink); }
+
+/* 吹き出し */
+.say {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  padding: 6px 20px;
+  border: 4px solid var(--ink);
+  border-radius: 999px;
+  background: #fff;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 34px;
+  color: var(--red);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.say::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-right: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+}
+.say--1 { left: 20px; top: 70px; rotate: -8deg; }
+.say--1::after { right: 34px; transform: skewX(-20deg) rotate(45deg); }
+.say--2 { left: 370px; top: 300px; rotate: 8deg; color: var(--cobalt); }
+.say--2::after { left: 30px; transform: skewX(20deg) rotate(45deg); }

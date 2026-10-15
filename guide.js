@@ -8,7 +8,7 @@
 
   const poses = ["reach", "dyno", "heel", "run", "dance"];
   document.getElementById("hero-figs").innerHTML = poses
-    .map((p, i) => person(i * 17 + 40, { pose: p }))
+    .map((p, i) => person(i * 17 + 40, { pose: p, pad: true }))
     .join("");
 
   // ---------- ガンバ！ボタン ----------

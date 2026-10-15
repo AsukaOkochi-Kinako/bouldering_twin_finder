@@ -46,10 +46,12 @@
   display: flex;
   justify-content: center;
   gap: 4px;
-  margin: 18px auto 0;
-  overflow: hidden;
+  margin: 10px auto 0;
+  /* 横のはみ出しだけ隠す。上は跳ねる分の余白をとって頭が切れないようにする */
+  padding-top: 32px;
+  overflow-x: clip;
 }
-.ghero__figs svg { flex: 0 0 auto; width: 96px; height: 110px; animation: bounce 1.8s ease-in-out infinite; }
+.ghero__figs svg { flex: 0 0 auto; width: 110px; height: 124px; animation: bounce 1.8s ease-in-out infinite; }
 .ghero__figs svg:nth-child(2n) { animation-delay: -.6s; translate: 0 -14px; }
 
 .toc {
@@ -432,6 +434,6 @@
   .steps, .bubbles, .words, .cols, .points { grid-template-columns: 1fr; }
   .grade-rule { flex-direction: column; }
   .grade-rule__arrow { rotate: 90deg; line-height: 1; font-size: 24px; }
-  .ghero__figs svg { width: 70px; height: 80px; }
+  .ghero__figs svg { width: 78px; height: 88px; }
   .gsec__num { font-size: 44px; }
 }
