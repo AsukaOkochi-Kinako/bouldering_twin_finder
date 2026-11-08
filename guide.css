@@ -454,6 +454,12 @@
 /* ========== responsive ========== */
 @media (max-width: 640px) {
   .steps, .bubbles, .cols, .points { grid-template-columns: 1fr; }
+  /* 吹き出しが1列のときだけ、偶数番目のしっぽを右側に（左右反転） */
+  .bubble:nth-child(even)::after {
+    left: auto;
+    right: 28px;
+    transform: scaleX(-1) skewY(30deg) rotate(30deg);
+  }
   .words { display: block; padding: 18px 16px; }
   .word { display: block; }
   .word + .word { margin-top: 18px; }
