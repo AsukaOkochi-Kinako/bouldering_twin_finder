@@ -22,6 +22,7 @@
   const HAIR = ["#2b2340", "#5e3522", "#f2492f", "#ffd83d", "#74a9e0", "#2fa86b", "#ffffff", "#ff7eb6"];
   const HAIRSTYLES = ["short", "bob", "bun", "pony", "beanie", "cap", "bear"];
   const PATTERNS = ["solid", "stripe", "dots", "zigzag", "check"];
+  const SKIN_TONES = { light: "#ffd9c2", medium: "#f6c39c", tan: "#e0a07a" };
 
   // 再現性のある乱数（同じ選手は毎回同じ見た目になる）
   function rng(seed) {
@@ -68,6 +69,38 @@
   }
 
   function hairSVG(style, hair, accent, back) {
+    const dots = (list) => list.map(([x, y, rad]) => `<circle cx="${x}" cy="${y}" r="${rad}" fill="${hair}"/>`).join("");
+    const parted = `<path d="M55 30 a15 15 0 0 1 30 0 q-6 -7 -15 -8 q-9 1 -15 8z" fill="${hair}"/>`;
+
+    // 選手の写真に合わせて追加した髪型
+    if (style === "curly" || style === "fluffy") {
+      const big = style === "fluffy" ? 2 : 0;
+      return back
+        ? dots([[55, 25, 7 + big], [62, 17, 7 + big], [70, 14, 8 + big], [78, 17, 7 + big], [85, 25, 7 + big], [54, 33, 5 + big], [86, 33, 5 + big]])
+        : dots([[59, 23, 5 + big], [66, 20, 5.5 + big], [74, 20, 5.5 + big], [81, 23, 5 + big]]);
+    }
+    if (style === "messy") {
+      return back ? "" : `<path d="M55 31 l-1 -7 l5 1 l2 -7 l5 3 l4 -5 l4 5 l6 -3 l1 7 l5 0 l-1 6 q-6 -6 -15 -5 q-9 -1 -15 5z" fill="${hair}" stroke="${hair}" stroke-width="3" stroke-linejoin="round"/>`;
+    }
+    if (style === "long") {
+      return back ? `<rect x="52" y="20" width="36" height="38" rx="14" fill="${hair}"/>` : parted;
+    }
+    if (style === "longcurly") {
+      return back
+        ? dots([[54, 26, 7], [86, 26, 7], [51, 36, 7], [89, 36, 7], [52, 47, 7], [88, 47, 7], [55, 57, 6], [85, 57, 6], [70, 19, 11]])
+        : parted;
+    }
+    if (style === "bobfringe") {
+      return back
+        ? `<circle cx="70" cy="31" r="19" fill="${hair}"/><rect x="51" y="30" width="38" height="17" rx="7" fill="${hair}"/>`
+        : `<path d="M55 29 a15 15 0 0 1 30 0 l0 1 q-15 -3 -30 0z" fill="${hair}"/>`;
+    }
+    if (style === "ponyfringe") {
+      return back
+        ? `<path d="M82 24 q26 -4 25 26" fill="none" stroke="${hair}" stroke-width="8" stroke-linecap="round"/>`
+        : `<path d="M55 29 a15 15 0 0 1 30 0 l0 1 q-15 -3 -30 0z" fill="${hair}"/>`;
+    }
+
     // back=true: 頭の後ろに描くパーツ
     if (back) {
       if (style === "bob") return `<circle cx="70" cy="32" r="19" fill="${hair}"/><rect x="51" y="30" width="38" height="16" rx="6" fill="${hair}"/>`;
@@ -90,7 +123,8 @@
 
   let uid = 0;
   // 人のイラストを生成
-  // opts: { pose, detached, pad }
+  // opts: { pose, detached, pad, look }
+  // look: 選手ごとの見た目（data.js）。指定があれば seed の乱数より優先する
   function person(seed, opts) {
     const o = opts || {};
     const r = rng(seed);
@@ -98,21 +132,38 @@
     const id = "f" + (uid++);
     const pose = POSES[o.pose] || POSES[POSE_KEYS[seed % POSE_KEYS.length]];
 
-    const skin = pick(SKIN);
-    const hair = pick(HAIR);
-    const style = pick(HAIRSTYLES);
-    const shirtC = C[pick(CLOTH)];
+    const look = o.look;
+    let skin = pick(SKIN);
+    let hair = pick(HAIR);
+    let style = pick(HAIRSTYLES);
+    let shirtC = C[pick(CLOTH)];
     let pantsC = C[pick(CLOTH)];
     if (pantsC === shirtC) pantsC = C.cobalt;
     const accentC = C[pick(CLOTH.filter((k) => C[k] !== shirtC))];
-    const shoeC = C[pick(["pink", "yellow", "red", "cobalt", "white", "green"])];
+    let shoeC = C[pick(["pink", "yellow", "red", "cobalt", "white", "green"])];
     const hatC = C[pick(["yellow", "red", "pink", "teal", "cobalt"])];
-    const shirtP = pick(PATTERNS);
-    const pantsP = pick(["solid", "solid", "stripe", "dots"]);
+    let shirtP = pick(PATTERNS);
+    let pantsP = pick(["solid", "solid", "stripe", "dots"]);
+    let pantsAccent = C.white;
+
+    if (look) {
+      skin = SKIN_TONES[look.skin];
+      hair = look.hairColor;
+      style = look.hair;
+      shirtC = look.top;
+      pantsC = look.bottom;
+      shoeC = look.shoe;
+      shirtP = "solid";
+      pantsP = look.bottomPattern || "solid";
+      pantsAccent = look.bottomAccent || C.white;
+    }
 
     const defs = patternDef(id + "s", shirtP, shirtC, shirtC === C.white ? C.red : C.white, false)
-               + patternDef(id + "p", pantsP, pantsC, C.white, true);
+               + patternDef(id + "p", pantsP, pantsC, pantsAccent, true);
     const shirt = `url(#${id}s)`;
+    const sleeve = look ? look.sleeve : "long";       // long | tee | tank
+    const sleeveColor = (look && look.sleeveColor) || shirt;
+    const shorts = Boolean(look && look.shorts);
     const pants = `url(#${id}p)`;
 
     const sh = { l: [58, 54], r: [82, 54] };
@@ -121,7 +172,7 @@
       `<polyline points="${pts.map((p) => p.join(",")).join(" ")}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
     const mid = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
 
-    let legs = "", arms = "";
+    let legs = "", arms = "", armsBack = "";
     ["l", "r"].forEach((s) => {
       const [knee, foot] = pose[s + "l"];
       const [elbow, hand] = pose[s + "a"];
@@ -132,17 +183,30 @@
         arms += line([sh[s], mid(sh[s], elbow, .85)], shirt, 14);
         arms += `<circle cx="${hand[0]}" cy="${hand[1]}" r="8" fill="${skin}"/>`;
       } else {
-        legs += line([hp[s], knee, foot], pants, 17);
-        arms += line([sh[s], elbow, mid(elbow, hand, .7)], shirt, 14);
-        arms += line([mid(elbow, hand, .6), hand], skin, 11);
-        arms += `<circle cx="${hand[0]}" cy="${hand[1]}" r="7.5" fill="${skin}"/>`;
+        if (shorts) {
+          legs += line([hp[s], knee, foot], skin, 13);
+          legs += line([hp[s], mid(hp[s], knee, .6)], pants, 18);
+        } else {
+          legs += line([hp[s], knee, foot], pants, 17);
+        }
+        const handDot = `<circle cx="${hand[0]}" cy="${hand[1]}" r="7.5" fill="${skin}"/>`;
+        if (sleeve === "tank") {
+          // 肩が胴体の後ろから出るように、胴体より先に描く
+          armsBack += line([sh[s], elbow, hand], skin, 12) + handDot;
+        } else if (sleeve === "tee") {
+          arms += line([sh[s], elbow, hand], skin, 12);
+          arms += line([sh[s], mid(sh[s], elbow, .6)], sleeveColor, 15) + handDot;
+        } else {
+          arms += line([sh[s], elbow, mid(elbow, hand, .7)], sleeveColor, 14);
+          arms += line([mid(elbow, hand, .6), hand], skin, 11) + handDot;
+        }
       }
       legs += shoe(foot, knee, shoeC, C.dark);
     });
 
     const cheek = r() > .5
       ? `<circle cx="61" cy="38" r="3" fill="${C.pink}" opacity=".7"/><circle cx="79" cy="38" r="3" fill="${C.pink}" opacity=".7"/>` : "";
-    const smile = r() > .4
+    const smile = (r() > .4 || look)
       ? `<path d="M65 40 q5 5 10 0" fill="none" stroke="${C.dark}" stroke-width="2" stroke-linecap="round"/>`
       : `<ellipse cx="70" cy="41" rx="3" ry="3.5" fill="${C.dark}"/>`;
 
@@ -150,11 +214,12 @@
 <svg viewBox="${o.pad ? "-12 -10 164 184" : "0 0 140 160"}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <defs>${defs}</defs>
   ${legs}
+  ${armsBack}
   <rect x="52" y="48" width="36" height="54" rx="14" fill="${shirt}"/>
   <rect x="60" y="94" width="20" height="10" rx="4" fill="${pantsC}"/>
   ${arms}
-  <rect x="65" y="42" width="10" height="10" rx="3" fill="${skin}"/>
   ${hairSVG(style, hair, hatC, true)}
+  <rect x="65" y="42" width="10" height="10" rx="3" fill="${skin}"/>
   <circle cx="70" cy="32" r="15" fill="${skin}"/>
   ${hairSVG(style, hair, hatC, false)}
   <circle cx="64" cy="33" r="2.2" fill="${C.dark}"/>

@@ -20,9 +20,11 @@
   font-weight: 800;
   font-size: 14px;
   text-decoration: none;
+  box-shadow: 3px 3px 0 var(--ink);
   transition: transform .12s, box-shadow .12s;
 }
-.topnav__back:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+.topnav__back:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.topnav__back:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
 
 /* ========== hero ========== */
 .ghero {
@@ -75,7 +77,8 @@
   box-shadow: 3px 3px 0 #2b2340;
   transition: transform .12s, box-shadow .12s;
 }
-.toc__chip:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 #2b2340; }
+.toc__chip:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #2b2340; }
+.toc__chip:active { transform: translate(3px, 3px); box-shadow: 0 0 0 #2b2340; }
 .toc__chip--pink { background: var(--pink); }
 .toc__chip--yellow { background: var(--yellow); }
 .toc__chip--blue { background: var(--blue); }

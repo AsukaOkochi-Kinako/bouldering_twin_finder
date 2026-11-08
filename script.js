@@ -76,7 +76,7 @@
     return `
 <li class="card">
   <span class="card__rank">${i + 1}</span>
-  <div class="card__avatar">${person(seed, { pose: poseFor(c), pad: true })}</div>
+  <div class="card__avatar">${person(seed, { pose: poseFor(c), pad: true, look: c.look })}</div>
   <div class="card__body">
     <span class="card__country">${esc(c.country)}</span>
     <h3 class="card__name">${esc(c.name)}</h3>
